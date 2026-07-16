@@ -14,15 +14,20 @@ The code supports two related tasks:
 ## Repository Structure
 
 ```text
-models/
-├── diffusion/
-│   ├── ddpm_train.py       # DDPM architecture, training loop, EMA, and checkpointing
-│   └── ddpm_evaluate.py    # Reconstruction metrics and cloud-mask sampling
-└── restoration/
-    ├── exp-NAFNet.py       # NAFNet-style restoration baseline
-    ├── exp-Restormer.py    # Restormer-style restoration baseline
-    └── exp-Gradient-final.py
-                              # Mixed real/synthetic restoration experiment
+.
+├── .gitignore              # Data, credentials, checkpoints, caches, and outputs
+├── environment.yml         # Reference Conda environment (Python 3.10)
+├── pyproject.toml          # Project metadata, dependencies, and development tools
+├── requirements.txt        # Pip-compatible runtime dependencies
+└── models/
+    ├── diffusion/
+    │   ├── ddpm_train.py       # DDPM architecture, training loop, EMA, and checkpointing
+    │   └── ddpm_evaluate.py    # Reconstruction metrics and cloud-mask sampling
+    └── restoration/
+        ├── exp-NAFNet.py       # NAFNet-style restoration baseline
+        ├── exp-Restormer.py    # Restormer-style restoration baseline
+        └── exp-Gradient-final.py
+                                  # Mixed real/synthetic restoration experiment
 ```
 
 ## Requirements
@@ -32,15 +37,38 @@ models/
 - NumPy
 - tqdm
 - scikit-image
-- torchvision (optional; used to save sampled masks as PNG grids)
+- torchvision (optional in the code, but included in the reference environments to enable PNG sampling)
 
-Create an isolated environment and install the dependencies:
+### Pip
+
+Create an isolated environment and install the project dependencies:
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
-python -m pip install torch numpy tqdm scikit-image torchvision
+python -m pip install -r requirements.txt
+```
+
+The equivalent metadata-driven installation is:
+
+```bash
+python -m pip install .
+```
+
+Install the optional development tools with:
+
+```bash
+python -m pip install ".[dev]"
+```
+
+### Conda
+
+Create the reference Python 3.10 environment with:
+
+```bash
+conda env create -f environment.yml
+conda activate sentinel2-ddpm-cloud-removal
 ```
 
 Install a PyTorch build compatible with your operating system and CUDA version when GPU acceleration is required. All scripts fall back to CPU execution, but diffusion training is substantially faster on a CUDA-capable GPU.
