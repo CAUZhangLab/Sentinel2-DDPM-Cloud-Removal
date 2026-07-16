@@ -1,0 +1,76 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Packaging artifacts
+build/
+dist/
+*.egg-info/
+
+# Virtual environments and local environment variables
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
+
+# IDE and operating-system metadata
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Raw and processed datasets
+data/
+datasets/
+patches/
+*.npy
+*.npz
+*.tif
+*.tiff
+*.jp2
+*.SAFE/
+
+# Model weights and exported models
+checkpoints/
+weights/
+*.pt
+*.pth
+*.ckpt
+*.onnx
+
+# Training, evaluation, and experiment artifacts
+outputs/
+results/
+runs/
+logs/
+wandb/
+training_results*/
+evaluation_samples/
+metrics*.json
+metrics*.csv
+metrics*.txt
+
+# Downloaded archives and temporary files
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.tmp
+*.temp
+
+# Credentials and private keys
+credentials.json
+secrets.yaml
+secrets.yml
+*.pem
+*.key
