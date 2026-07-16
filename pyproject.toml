@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sentinel2-ddpm-cloud-removal"
+version = "0.1.0"
+description = "PyTorch research models for Sentinel-2 cloud-mask diffusion and multispectral cloud removal."
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+  { name = "CAUZhangLab" }
+]
+keywords = [
+  "Sentinel-2",
+  "cloud removal",
+  "diffusion models",
+  "remote sensing",
+  "multispectral imaging"
+]
+dependencies = [
+  "numpy>=1.24,<3.0",
+  "torch>=2.0,<3.0",
+  "torchvision>=0.15,<1.0",
+  "tqdm>=4.65,<5.0",
+  "scikit-image>=0.21,<1.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8,<9",
+  "ruff>=0.5,<1.0"
+]
+
+[tool.setuptools]
+py-modules = []
+
+[tool.ruff]
+target-version = "py39"
+line-length = 120
+exclude = [
+  ".git",
+  ".venv",
+  "build",
+  "checkpoints",
+  "data",
+  "dist",
+  "outputs",
+  "results",
+  "runs"
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
